@@ -25,6 +25,7 @@ class RippleButton extends StatelessWidget
   final Color splashColor;
   final String tooltip;
   final IconPosition iconPosition;
+  final double spacing;
 
   const RippleButton({Key key,
     this.onTap,
@@ -40,10 +41,11 @@ class RippleButton extends StatelessWidget
     this.splashColor = Colors.white,
     this.tooltip,
     this.width,
-    this.height}): assert(!(child != null && (text != null || icon != null))),
-                   assert(!(child != null && (width != null || height != null))),
-                   assert(textStyle == null || text != null),
-                   super(key: key);
+    this.height,
+    this.spacing = 5.0}): assert(!(child != null && (text != null || icon != null))),
+                          assert(!(child != null && (width != null || height != null))),
+                          assert(textStyle == null || text != null),
+                          super(key: key);
 
   @override
   Widget build(BuildContext context)
@@ -97,13 +99,13 @@ class RippleButton extends StatelessWidget
     if (iconPosition == IconPosition.Right || iconPosition == IconPosition.Bottom) {
       return <Widget>[
         if (icon == null || text != null) _createTextChild(context),
-        if (icon != null && text != null) SizedBox(width: 20),
+        if (icon != null && text != null) iconPosition == IconPosition.Right ? SizedBox(width: spacing) : SizedBox(height: spacing),
         if (icon != null) icon,
       ];
     } else {
       return <Widget>[
         if (icon != null) icon,
-        if (icon != null && text != null) SizedBox(width: 20),
+        if (icon != null && text != null) iconPosition == IconPosition.Left ? SizedBox(width: spacing) : SizedBox(height: spacing),
         if (icon == null || text != null) _createTextChild(context),
       ];
     }
