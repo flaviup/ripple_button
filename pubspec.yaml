@@ -1,8 +1,8 @@
 name: ripple_button
 description: A ripple material button. Supports both text and icon.
 version: 0.0.1
-author:
-homepage:
+author: Flaviu Pasca
+homepage: https://github.com/flaviup/ripple_button
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
